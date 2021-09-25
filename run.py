@@ -12,8 +12,16 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('reinstatement_measure_sheet')
 
-project = SHEET.worksheet('project')
+def get_wprn():
 
-data = project.get_all_values()
+ while True:
+    wprn = input("Please enter a WPRN ")
+    try:
+        val = int(wprn)
+        print("Wprn number is: ", val)
+        break;
+    except ValueError:
+            print("This is not a valid wprn. Please enter a valid wprn")
+    
 
-print(data)
+get_wprn()
