@@ -14,14 +14,21 @@ SHEET = GSPREAD_CLIENT.open('reinstatement_measure_sheet')
 
 def get_wprn():
 
- while True:
-    wprn = input("Please enter a WPRN ")
+    wprn = input("Please enter a WPRN\n") 
+    validate_data(wprn)
+    print(f"you entered {wprn}")
+
+
+def validate_data(wprn):
     try:
-        val = int(wprn)
-        print("Wprn number is: ", val)
-        break;
-    except ValueError:
-            print("This is not a valid wprn. Please enter a valid wprn")
-    
+        int(wprn)
+        if len(wprn) != 7:
+            raise ValueError(
+                    f"exactly 7 digits required you entered {len(wprn)}"
+                )    
+    except ValueError as e:
+        print(f"invalid data {e}") 
+
 
 get_wprn()
+
