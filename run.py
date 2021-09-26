@@ -13,21 +13,27 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('reinstatement_measure_sheet')
 
 def get_wprn():
-
-    wprn = input ("Please enter a WPRN\n")
-    validate_data(wprn)
-   
-
+    while True:
+        wprn = input ("Please enter a WPRN\n")
+        
+        if validate_data(wprn):
+            print("Wprn is Valid")
+        break   
+    
+        
 
 def validate_data(wprn):
     try:
+        int(wprn)
         if len(wprn) != 7:
             raise ValueError(
                     f"exactly 7 digits required you entered {len(wprn)}"
                 )    
     except ValueError as e:
         print(f"invalid data {e}") 
+        return False
 
+    return True
 
 def measures():
 
