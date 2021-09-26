@@ -14,18 +14,21 @@ SHEET = GSPREAD_CLIENT.open('reinstatement_measure_sheet')
 
 def get_wprn():
     while True:
-        wprn = input ("Please enter a WPRN\n")
         
-        if validate_data(wprn):
+        wprn = input("Please enter a WPRN\n")
+        
+        user_data = wprn.split(",")
+        if validate_data(user_data):
             print("Wprn is Valid")
-        break   
-    
+            break  
         
+    return user_data    
+   
 
-def validate_data(wprn):
+def validate_data(values):
     try:
-        int(wprn)
-        if len(wprn) != 7:
+        [int(value) for value in values]
+        if len(values) != 1:
             raise ValueError(
                     f"exactly 7 digits required you entered {len(wprn)}"
                 )    
@@ -33,19 +36,55 @@ def validate_data(wprn):
         print(f"invalid data {e}") 
         return False
 
+   
     return True
+   
 
 def measures():
 
 
-    length = float(input('Please enter length:\n '))
-    width = float(input('Please enter width:\n '))
-    depth = float(input('Please enter depth:\n '))
+    print("please enter length width and dept followed by a comma,")
+    measure = input("input data here\n")
 
-    total_area_cubed = (length * width * depth)
+    user_measure = measure.split(",")
+    if validate_data(user_measure):
+        print("measure is Valid")
+          
+        
+    return user_measure    
+
+    #total_area_cubed = (length,  int(width),  int(depth))
     print('Total Concrete needed')
     print(total_area_cubed)
+    return total_area_cubed
 
 
-get_wprn()
-measures()
+def validate_measures():
+    try:
+        [int(measure) for measure in measures]
+        if len(values) != 3:
+            raise ValueError(
+                    f"exactly 3 digits required you entered {len(wprn)}"
+                )    
+    except ValueError as e:
+        print(f"invalid data {e}") 
+        return False
+
+   
+    return True
+
+
+
+
+    
+def update_tracker(wprn_data):
+    print("updating tracker sheet")
+    total_row = wprn_data + total_area_cubed
+    tracker_worksheet = SHEET.worksheet('project')
+    tracker_worksheet.append_row(total_row)
+    print("updated Successfully")
+
+wprn = get_wprn()
+wprn_data = [int(num) for num in wprn]
+total_area_cubed = measures()
+update_tracker(wprn_data)
