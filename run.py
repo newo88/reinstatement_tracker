@@ -69,21 +69,14 @@ def measures():
         if validate_measures(user_measure):
             print("measure is Valid")
             break
-    print(type(user_measure))  #list
-    print(type(measure))  #string
-    multiplied_list = [i * 5 for i in user_measure]
-    print(multiplied_list)
 
-    an_array = np.array(user_measure)
-    this_number = an_array * 2
-    print(this_number)
 
     return user_measure
 
 
 def validate_measures(values):
     try:
-        [int(value) for value in values]
+        [float(value) for value in values]
         if len(values) != 3:
             raise ValueError(
                     f"exactly 3 digits required you entered {len(values)}"
@@ -102,9 +95,18 @@ def get_area():
     the meter cube required for the hole.
     """
 
-    for i in sorted(user_measure):
-        print(i)
-
+    
+    result = 1
+    for x in user_measure:
+        result = result * int(x)
+    print(result)
+    # to convert number to list of integers
+    total = [int(x) for x in str(result)]
+    print(total)
+    total_area = total.split(" ")
+    print(total_area)
+    return total
+    
 
 
 def update_tracker(wprn_data):
@@ -114,7 +116,7 @@ def update_tracker(wprn_data):
     """
 
     print("updating tracker sheet")
-    total_row = wprn_data + user_measure
+    total_row = wprn_data + user_measure + total
     tracker_worksheet = SHEET.worksheet('project')
     tracker_worksheet.append_row(total_row)
     print("updated Successfully")
@@ -124,5 +126,5 @@ def update_tracker(wprn_data):
 wprn = get_wprn()
 wprn_data = [int(num) for num in wprn]
 user_measure = measures()
+total = get_area()
 update_tracker(wprn_data)
-get_area()
