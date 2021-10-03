@@ -16,7 +16,6 @@ SHEET = GSPREAD_CLIENT.open('reinstatement_measure_sheet')
 
 def get_wprn():
 
-
     """
     Request Wprn from user
     """
@@ -66,7 +65,6 @@ def measures():
             print("measure is Valid")
             break
 
-
     return user_measure
 
 
@@ -91,14 +89,15 @@ def get_area():
     the meter cube required for the hole.
     """
 
-    
     result = 1
     for x in user_measure:
         result = result * float(x)
     print(result)
-    result = "{:.2f}".format(result) #https://pythonguides.com/python-print-2-decimal-places/
+    # https://pythonguides.com/python-print-2-decimal-places/
+    result = "{:.2f}".format(result)
     return result
-    
+
+
 def calculate_cost():
 
     price = 2
@@ -121,7 +120,6 @@ def update_tracker(wprn_data):
     tracker_worksheet = SHEET.worksheet('project')
     tracker_worksheet.append_row(total_row)
     print("updated Successfully")
-    
 
 
 wprn = get_wprn()
@@ -130,4 +128,3 @@ user_measure = measures()
 result = get_area()
 cost = calculate_cost()
 update_tracker(wprn_data)
-
