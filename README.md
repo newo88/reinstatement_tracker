@@ -1,14 +1,20 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# REINSTATEMENT TRACKER SHEET.
 
-Welcome Owen McGill,
+Reinstatement tracker is a python based terminal application built for a civils company to save time 
+on recording reinstatements and invoicing there clients. 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+## Links to Site and Google Sheet.
 
-## Reminders
+* View the live project here. [Reinstatement_Tracker](https://tracker-application.herokuapp.com/)
+* View the google sheet here. [Tracker_Spreadsheet](https://docs.google.com/spreadsheets/d/1BpOi3ajY4jSfYhaA6EqqBmWCc3Cy4oAlGxu9ruqyU4A/edit#gid=0)
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## User Experience (UX)
+
+### Site Owners Goals
+
+* 
+* 
+* 
 
 ## Creating the Heroku app
 
