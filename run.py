@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from datetime import datetime
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -13,17 +14,27 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('reinstatement_measure_sheet')
 
 
+def get_date():
+
+    now = datetime.now()
+    new_date = now.strftime("%Y-%m-%d %H:%M:%S")
+    new_date = str(new_date)
+    
+    return new_date
+
+
+
 def get_wprn():
 
     """
     Request Wprn from user
     """
     while True:
-        wprn = input("Please enter your 7 didgit reference number\n")
+        wprn = input("Please enter your 7 digit reference number\n")
 
         user_data = wprn.split(",")
         if validate_data(wprn):
-            print("Wprn is Valid\n")
+            print("Reference number is Valid\n")
             break
 
     return user_data
@@ -56,7 +67,7 @@ def measures():
     """
     while True:
 
-        print("Please enter length width and dept followed by a comma ,\n")
+        print("Please enter length width and depth followed by a comma ,\n")
         print("Example 2.5,2.36,0.5\n ")
         measure = input("Input data here\n")
         user_measure = measure.split(",")
@@ -117,17 +128,17 @@ def update_tracker(wprn_data):
     total_row = wprn_data + user_measure
     total_row.append(result)
     total_row.append(f"€ {cost}")
+    total_row.append(new_date)
     tracker_worksheet = SHEET.worksheet('project')
     tracker_worksheet.append_row(total_row)
     print("Updated Successfully\n")
 
 
 print("Welcome to the Reinstatement Tracker Sheet\n")
+new_date = get_date()
 wprn = get_wprn()
 wprn_data = [int(num) for num in wprn]
 user_measure = measures()
 result = get_area()
 cost = calculate_cost()
 update_tracker(wprn_data)
-
-
