@@ -98,14 +98,10 @@ def get_area():
     
     result = 1
     for x in user_measure:
-        result = result * int(x)
+        result = result * float(x)
     print(result)
-    # to convert number to list of integers
-    total = [int(x) for x in str(result)]
-    print(total)
-    total_area = total.split(" ")
-    print(total_area)
-    return total
+    
+    return result
     
 
 
@@ -116,15 +112,17 @@ def update_tracker(wprn_data):
     """
 
     print("updating tracker sheet")
-    total_row = wprn_data + user_measure + total
+    total_row = wprn_data + user_measure
+    total_row.append(result)
     tracker_worksheet = SHEET.worksheet('project')
     tracker_worksheet.append_row(total_row)
     print("updated Successfully")
-    print(user_measure)
+    
 
 
 wprn = get_wprn()
 wprn_data = [int(num) for num in wprn]
 user_measure = measures()
-total = get_area()
+result = get_area()
 update_tracker(wprn_data)
+
