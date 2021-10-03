@@ -1,7 +1,4 @@
 import gspread
-import numpy as np
-import numpy
-import math
 
 from google.oauth2.service_account import Credentials
 
@@ -64,7 +61,6 @@ def measures():
 
         print("please enter length width and dept followed by a comma,")
         measure = input("input data here\n")
-
         user_measure = measure.split(",")
         if validate_measures(user_measure):
             print("measure is Valid")
@@ -100,9 +96,16 @@ def get_area():
     for x in user_measure:
         result = result * float(x)
     print(result)
-    
+    result = "{:.2f}".format(result) #https://pythonguides.com/python-print-2-decimal-places/
     return result
     
+def calculate_cost():
+
+    price = 2
+    area = float(result)
+    cost = area * price
+    print(cost)
+    return cost
 
 
 def update_tracker(wprn_data):
@@ -114,6 +117,7 @@ def update_tracker(wprn_data):
     print("updating tracker sheet")
     total_row = wprn_data + user_measure
     total_row.append(result)
+    total_row.append(cost)
     tracker_worksheet = SHEET.worksheet('project')
     tracker_worksheet.append_row(total_row)
     print("updated Successfully")
@@ -124,5 +128,6 @@ wprn = get_wprn()
 wprn_data = [int(num) for num in wprn]
 user_measure = measures()
 result = get_area()
+cost = calculate_cost()
 update_tracker(wprn_data)
 
