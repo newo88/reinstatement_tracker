@@ -104,6 +104,7 @@ def calculate_cost():
     area = float(result)
     cost = area * price
     print(cost)
+    cost = "{:.2f}".format(cost)
     return cost
 
 
