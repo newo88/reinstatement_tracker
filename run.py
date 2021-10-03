@@ -116,7 +116,7 @@ def update_tracker(wprn_data):
     print("updating tracker sheet")
     total_row = wprn_data + user_measure
     total_row.append(result)
-    total_row.append(cost)
+    total_row.append(f"€ {cost}")
     tracker_worksheet = SHEET.worksheet('project')
     tracker_worksheet.append_row(total_row)
     print("updated Successfully")
