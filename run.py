@@ -19,12 +19,11 @@ def get_wprn():
     Request Wprn from user
     """
     while True:
-
-        wprn = input("Please enter a WPRN\n")
+        wprn = input("Please enter your 7 didgit reference number\n")
 
         user_data = wprn.split(",")
         if validate_data(wprn):
-            print("Wprn is Valid")
+            print("Wprn is Valid\n")
             break
 
     return user_data
@@ -57,11 +56,12 @@ def measures():
     """
     while True:
 
-        print("please enter length width and dept followed by a comma,")
-        measure = input("input data here\n")
+        print("Please enter length width and dept followed by a comma ,\n")
+        print("Example 2.5,2.36,0.5\n ")
+        measure = input("Input data here\n")
         user_measure = measure.split(",")
         if validate_measures(user_measure):
-            print("measure is Valid")
+            print("Measure is Valid\n")
             break
 
     return user_measure
@@ -87,23 +87,23 @@ def get_area():
     Takes the measure from measures and calculates
     the meter cube required for the hole.
     """
-
+    print("Calculating Area ......")
     result = 1
     for x in user_measure:
         result = result * float(x)
-    print(result)
     # https://pythonguides.com/python-print-2-decimal-places/
     result = "{:.2f}".format(result)
+    print(f"Area = {result}\n")
     return result
 
 
 def calculate_cost():
-
+    print("Calculating Cost......")
     price = 2
     area = float(result)
     cost = area * price
-    print(cost)
     cost = "{:.2f}".format(cost)
+    print(f"Cost = {cost}\n")
     return cost
 
 
@@ -113,18 +113,21 @@ def update_tracker(wprn_data):
     Updates the google sheet with the information entered by the user.
     """
 
-    print("updating tracker sheet")
+    print("Updating Tracker Sheet.......\n")
     total_row = wprn_data + user_measure
     total_row.append(result)
     total_row.append(f"€ {cost}")
     tracker_worksheet = SHEET.worksheet('project')
     tracker_worksheet.append_row(total_row)
-    print("updated Successfully")
+    print("Updated Successfully\n")
 
 
+print("Welcome to the Reinstatement Tracker Sheet\n")
 wprn = get_wprn()
 wprn_data = [int(num) for num in wprn]
 user_measure = measures()
 result = get_area()
 cost = calculate_cost()
 update_tracker(wprn_data)
+
+
