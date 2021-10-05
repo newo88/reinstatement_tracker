@@ -10,11 +10,23 @@ on recording reinstatements and invoicing there clients.
 
 ## User Experience (UX)
 
+### Project Goal's
+
+The main goal of this project is to provide a terminal based application that saves a cizils company
+both time and money while carrying out site based work measuring and calculating the amount of concrete needed 
+to reinstate work after it is completed. The process before this was haven to measure write out the dimensions on site on a page and then transfer them to a spread sheet in the office. The way this application saves time and money is the whole thing is automated using python. The user enters all the details on site in the terminal which does the calculation for the concrete and automatically gets sent to a google sheet.   
+
 ### Site Owners Goals
 
-* 
-* 
-* 
+* To build an application that is stream line and easy to use.
+* To build an application that allows users to enter measurements and calculate the area squared.
+* To build an application that can handle user errors effectively with out crashing the program.
+
+### Site User Goals
+
+* For the application to be easy use.
+* To be able to enter data into the terminal and have it stored.
+* To be able to easy access the data when needed.
 
 ## Creating the Heroku app
 

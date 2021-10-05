@@ -74,7 +74,7 @@ def measures():
         if validate_measures(user_measure):
             print("Measure is Valid\n")
             break
-
+        
     return user_measure
 
 
@@ -88,7 +88,6 @@ def validate_measures(values):
     except ValueError as e:
         print(f"invalid data {e}")
         return False
-
     return True
 
 
@@ -98,15 +97,28 @@ def get_area():
     Takes the measure from measures and calculates
     the meter cube required for the hole.
     """
-    print("Calculating Area ......")
-    result = 1
-    for x in user_measure:
-        result = result * float(x)
+    while True:
+        print("Calculating Area ......")
+        result = 1
+        for x in user_measure:
+            result = result * float(x)
     # https://pythonguides.com/python-print-2-decimal-places/
-    result = "{:.2f}".format(result)
-    print(f"Area = {result}\n")
-    return result
+            if validate_area(result):
+                result = "{:.2f}".format(result)
+                print(f"Area= {result}\n")
+                break
+        return result
 
+def validate_area(value):
+    for x in str(value):
+        if str(value) >= x:
+            print(f"this is i{value}")
+            print("value to large please try again")
+            print(value)
+            measures()
+        return True
+
+   
 
 def calculate_cost():
     print("Calculating Cost......")
@@ -142,3 +154,6 @@ user_measure = measures()
 result = get_area()
 cost = calculate_cost()
 update_tracker(wprn_data)
+
+
+
