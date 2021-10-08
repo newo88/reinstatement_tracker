@@ -28,17 +28,44 @@ This is a terminal based application so the design is simple.
 
 ## Features
 
-`
+## Tech used
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+* GitHub Hold the respiratory for this project along with files.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+* Gitpod The platform ive been submitting and writing the final code.
 
-Connect your GitHub repository and deploy as normal.
+* Heroku To deploy the code in an app.
 
-## Constraints
+* PEP8 Online 
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-# https://pythonguides.com/python-print-2-decimal-places/
------
-Happy coding!
+## Testing
+
+## Bugs
+
+## Deployment
+
+Make sure you push your code back to GITHUB before deploymrnt
+
+Go onto Heroku
+
+Click create new app.
+
+Choose name for your project, and your region.
+
+Go to setting 
+
+Click on reveal config vars
+
+Also you need to add your CREDS file if you are using API for the project beeing able to access this one.
+
+Next we add build packs 
+
+Now head over to Deploy
+
+Connect to github
+
+The grey marking will show a box where you can search from your repos. Type in your repo name and connect.
+
+After this click the green marked button at the bottom and the project will be deployed and at the bottom we will get your link when all is done.
+
+## Ach

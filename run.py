@@ -78,6 +78,10 @@ def measures():
 
 
 def validate_measures(values):
+
+    """
+    Validates the users message
+    """
     try:
         [float(value) for value in values]
         if len(values) != 3 or values == 0:
@@ -114,6 +118,10 @@ def get_area():
 
 
 def calculate_cost():
+
+    """
+    Calculates the cost of the reinstatement
+    """
     print("Calculating Cost......")
     price = 2
     area = float(result)
