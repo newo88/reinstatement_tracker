@@ -19,9 +19,8 @@ def get_date():
     now = datetime.now()
     new_date = now.strftime("%Y-%m-%d %H:%M:%S")
     new_date = str(new_date)
-    
-    return new_date
 
+    return new_date
 
 
 def get_wprn():
@@ -74,14 +73,14 @@ def measures():
         if validate_measures(user_measure):
             print("Measure is Valid\n")
             break
-        
+
     return user_measure
 
 
 def validate_measures(values):
     try:
         [float(value) for value in values]
-        if len(values) != 3:
+        if len(values) != 3 or values == 0:
             raise ValueError(
                     f"exactly 3 digits required you entered {len(values)}"
                 )
@@ -97,28 +96,22 @@ def get_area():
     Takes the measure from measures and calculates
     the meter cube required for the hole.
     """
+
+    print("Calculating Area ......")
+    result = 1
+    for x in user_measure:
+        result = float(result) * float(x)
     while True:
-        print("Calculating Area ......")
-        result = 1
-        for x in user_measure:
-            result = result * float(x)
-    # https://pythonguides.com/python-print-2-decimal-places/
-            if validate_area(result):
-                result = "{:.2f}".format(result)
-                print(f"Area= {result}\n")
-                break
-        return result
-
-def validate_area(value):
-    for x in str(value):
-        if str(value) >= x:
-            print(f"this is i{value}")
-            print("value to large please try again")
-            print(value)
+        if float(result) >= float(20):
+            print("value to large")
             measures()
-        return True
+            break
+        else:
+            result = "{:.2f}".format(result)
+            print(f"Area= {result}\n")
+            break
+    return result
 
-   
 
 def calculate_cost():
     print("Calculating Cost......")
@@ -154,6 +147,3 @@ user_measure = measures()
 result = get_area()
 cost = calculate_cost()
 update_tracker(wprn_data)
-
-
-

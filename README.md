@@ -22,18 +22,13 @@ to reinstate work after it is completed. The process before this was haven to me
 * To build an application that allows users to enter measurements and calculate the area squared.
 * To build an application that can handle user errors effectively with out crashing the program.
 
-### Site User Goals
+### Design
 
-* For the application to be easy use.
-* To be able to enter data into the terminal and have it stored.
-* To be able to easy access the data when needed.
+This is a terminal based application so the design is simple.
 
-## Creating the Heroku app
+## Features
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
+`
 
 You must then create a _Config Var_ called `PORT`. Set this to `8000`
 
@@ -44,6 +39,6 @@ Connect your GitHub repository and deploy as normal.
 ## Constraints
 
 The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
+# https://pythonguides.com/python-print-2-decimal-places/
 -----
 Happy coding!
