@@ -6,8 +6,7 @@ on recording reinstatements and invoicing there clients.
 ## Links to Site and Google Sheet.
 
 * View the live project here. [Reinstatement_Tracker](https://tracker-application.herokuapp.com/)
-* View the google sheet here. [Tracker_Spreadsheet](https://docs.google.com/spreadsheets/d/1BpOi3ajY4jSfYhaA6EqqBmWCc3Cy4oAlGxu9ruqyU4A/edit#gid=0)
-
+* View the google sheet here. [Tracker_Spreadsheet](https://docs.google.com/spreadsheets/d/1BpOi3ajY4jSfYhaA6EqqBmWCc3Cy4oAlGxu9ruqyU4A/edit?usp=sharing)
 ## User Experience (UX)
 
 ### Project Goal's
@@ -42,6 +41,8 @@ This is a terminal based application so the design is simple.
 
 ## Bugs
 
+This Program is not completely finished. 
+
 ## Deployment
 
 Make sure you push your code back to GITHUB before deploymrnt
@@ -68,4 +69,3 @@ The grey marking will show a box where you can search from your repos. Type in y
 
 After this click the green marked button at the bottom and the project will be deployed and at the bottom we will get your link when all is done.
 
-## Ach
